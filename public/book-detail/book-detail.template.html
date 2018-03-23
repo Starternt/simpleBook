@@ -1,0 +1,18 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/#!/books" style="margin-left: 20px;">Home</a>
+    </div>
+  </div>
+</nav>
+
+<ul>
+  <li ng-repeat="book in $ctrl.books">
+    <h3><b>Наименование:</b> {{book.name}}</h3>
+    <h3><b>Автор:</b> {{book.author}}</h3>
+    <h3><b>Год издания:</b> {{book.publish_year}}</h3>
+    <h4><b>Описание:</b> {{book.description}}</h4>
+    <img ng-src="images/{{book.image}}" alt="image nor found" width="500">
+  </li>
+</ul>
+

@@ -1,0 +1,67 @@
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/#!/books" style="margin-left: 20px;">Home</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-9 col-md-offset-2">
+            <h3>Редактировать книгу</h3>
+            <form ng-submit="editBook()" ng-controller="DetailCtrl">
+                <div class="form-group">
+                    <input type="text" placeholder="Название" class="form-control" ng-model="name" required name="name">
+                    <div class="alert alert-danger"
+                         ng-show="answerForm.name.$touched && answerForm.name.$invalid">
+                        Ваше имя должно содержать хотя бы 1 символ!
+                    </div>
+                </div>
+
+                <div class="alert alert-danger" ng-if="errors.name">{{errors.name}}</div>
+
+                <div class="form-group">
+                    <input type="text" placeholder="Автор" class="form-control" ng-model="author" required
+                           name="author">
+                    <div class="alert alert-danger"
+                         ng-show="answerForm.author.$touched && answerForm.author.$invalid">
+                        Поле не должно быть пустым!
+                    </div>
+                </div>
+
+                <div class="alert alert-danger" ng-if="errors.author">{{errors.author}}</div>
+
+                <div class="form-group">
+                    <input type="text" placeholder="Год публикации" class="form-control" ng-model="publish_year"
+                           ng-pattern="regexp" name="publish_year" required>
+                    <div class="alert alert-danger"
+                         ng-show="answerForm.publish_year.$touched && answerForm.publish_year.$invalid">
+                        Поле должно содержать корректный год в формате "6666" и не должно быть пустым!
+                    </div>
+                </div>
+
+                <div class="alert alert-danger" ng-if="errors.publish_year">{{errors.publish_year}}</div>
+
+                <div class="form-group">
+                    <input type="text" placeholder="Описание" class="form-control" ng-model="description"
+                           name="description" required>
+                    <div class="alert alert-danger"
+                         ng-show="answerForm.description.$touched && answerForm.description.$invalid">
+                        Поле не должно быть пустым!
+                    </div>
+                </div>
+
+                <div class="alert alert-danger" ng-if="errors.description" required>{{errors.description}}</div>
+                <div class="form-group" style="text-align: center;">
+                    <img ng-src="images/{{image}}" alt="" width="300">
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-4 col-md-offset-4">
+                        <input type="submit" value="Сохранить" class="form-control btn-primary" name="submit">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
