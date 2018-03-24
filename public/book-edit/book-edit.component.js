@@ -42,9 +42,8 @@ pd.controller('DetailCtrl', function ($scope, $http, $routeParams, $location) {
         };
 
         $http.post('update', book).then(function (response) {
-            console.log(response.data);
             $scope.errors = response.data;
+            $location.path('/books');
         });
-        $location.path('/books');
     }
 });

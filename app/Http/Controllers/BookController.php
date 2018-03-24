@@ -39,12 +39,13 @@ class BookController extends Controller
         $data['publish_year'] = $request->input('publish_year');
         $data['description'] = $request->input('description');
         $errors = $check->checkData($data);
-        if ($errors) {
+
+        if ($errors['success'] == 'false') {
             return json_encode($errors);
         }
         $book->save();
 
-        return false;
+        return $errors;
     }
 
 
@@ -66,8 +67,8 @@ class BookController extends Controller
     public function show()
     {
         $data = Book::all();
-        return response()->json(['data' => $data], 200);
 
+        return response()->json(['data' => $data], 200);
     }
 
     /**
@@ -82,10 +83,10 @@ class BookController extends Controller
         return $book_item;
     }
 
-    public function upload($name ,Request $request){
-
-            $file = $request->file('file');
-            $file->move(public_path() . '/images/', "$name");
+    public function upload($name, Request $request)
+    {
+        $file = $request->file('file');
+        $file->move(public_path() . '/images/', "$name");
     }
 
     /**
@@ -104,13 +105,13 @@ class BookController extends Controller
         $data['description'] = $request->input('description');
         $errors = $check->checkData($data);
 
-        if ($errors) {
+        if ($errors['success'] == 'false') {
             return json_encode($errors);
         }
         DB::update('update books set name = ?, author = ?, publish_year = ?, description = ? where id = ?', [$data['name'],
             $data['author'], $data['publish_year'], $data['description'], $id]);
 
-        return false;
+        return $errors;
     }
 
     /**
@@ -122,6 +123,7 @@ class BookController extends Controller
     public function remove($id, Book $book)
     {
         $book = Book::where('id', '=', $id)->delete();
+
         return $id;
     }
 }

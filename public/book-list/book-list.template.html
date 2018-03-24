@@ -31,9 +31,9 @@
             </p>
 
         </div>
-        <div class="col-md-9">
+        <div class="col-md-9" ng-controller="ListCtrl">
             <h3>Добавить книгу</h3>
-            <form ng-submit="addNew(answerForm)" ng-controller="ListCtrl" name="answerForm" ng-init="select()">
+            <form ng-submit="addNew(answerForm)" name="answerForm" ng-init="select()">
                 <div class="form-group">
                     <input type="text" placeholder="Название" class="form-control" ng-model="name" required name="name">
                     <div class="alert alert-danger"
@@ -88,17 +88,11 @@
                     </div>
                 </div>
             </form>
-        </div>
 
-        <div ng-controller="ListCtrl">
-            <div ng-repeat="test in tests">{{test.name}}</div>
-        </div>
+            <div class="row">
+                <ul class="phones" style="padding-left: 0;">
 
-        <div class="col-md-9 col-md-offset-2">
-            <div class="row" ng-controller="ListCtrl">
-                <ul class="phones"style="padding-left: 0;">
-
-                    <li ng-repeat="book in books | filter:$ctrl.query | orderBy:predicate:reverse | startFrom:currentPage*pageSize | limitTo:pageSize"
+                    <li ng-repeat="book in data.books | filter:$ctrl.query | orderBy:predicate:reverse | startFrom:currentPage*pageSize | limitTo:pageSize"
                     >
                         <div class="col-md-12"
                              style="border: 1px solid gray; border-radius: 4px; margin-bottom: 20px; padding: 15px;">
@@ -117,7 +111,7 @@
                                 <a href="#!/edit/{{book.id}}">
                                     <button class="btn btn-info" style="display: inline-block">Редактировать</button>
                                 </a>
-                                <a href="" ng-click="removeBook(book.id)" ng-controller="ListCtrl">
+                                <a href="" ng-click="removeBook(book.id)">
                                     <button class="btn btn-danger" style="display: inline-block">Удалить</button>
                                 </a>
                             </div>
@@ -130,7 +124,7 @@
                             Previous
                         </button>
                         {{currentPage+1}}/{{numberOfPages()}}
-                        <button class="btn btn-success" ng-disabled="currentPage >= data/pageSize - 1"
+                        <button class="btn btn-success" ng-disabled="currentPage >= data_amount/pageSize - 1"
                                 ng-click="currentPage=currentPage+1">
                             Next
                         </button>
@@ -138,7 +132,6 @@
                 </ul>
             </div>
         </div>
-
     </div>
 </div>
 

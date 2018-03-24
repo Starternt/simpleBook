@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{asset('bower_components/bootstrap/dist/css/bootstrap.css')}} "/>
     <link rel="stylesheet" href="{{asset('app.css')}}"/>
     <script src="{{asset('pace.min.js')}}"></script>
-    <link href="{{asset('pace-theme-barber-shop.css')}}" rel="stylesheet"/>
+    <link href="{{asset('pace-theme-flash.css')}}" rel="stylesheet"/>
     <script src="{{asset('bower_components/angular/angular.js')}}"></script>
     <script src="{{asset('bower_components/angular-route/angular-route.js')}}"></script>
     <script src="{{asset('app.module.js')}}"></script>

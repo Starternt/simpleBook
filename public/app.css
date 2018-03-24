@@ -10,9 +10,9 @@ h1 {
     margin-bottom: 20px;
 }
 
-input.ng-invalid {
-    background-color: pink;
-}
+/*input.ng-invalid {*/
+/*background-color: pink;*/
+/*}*/
 
 input.ng-touched {
     background-color: pink;
@@ -33,7 +33,7 @@ input[name="submit"] {
     border: 0;
 }
 
-/* View: Phone list */
+/* View: Books list */
 .phones {
     list-style: none;
 }
@@ -52,7 +52,7 @@ input[name="submit"] {
     width: 100px;
 }
 
-/* View: Phone detail */
+/* View: Books detail */
 .phone {
     background-color: white;
     border: 1px solid black;
